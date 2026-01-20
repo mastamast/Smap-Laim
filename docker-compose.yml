@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  telegram-bot:
+    build: .
+    container_name: telegram-email-bot
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      # Persistir la base de datos
+      - ./data:/app/data
+      # Si la base de datos está en la raíz, usa esto en su lugar:
+      # - ./membership.db:/app/membership.db
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - ADMIN_USER_ID=${ADMIN_USER_ID}
+    
+    # Logs
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Configuración de volúmenes (opcional)
+volumes:
+  bot-data:
