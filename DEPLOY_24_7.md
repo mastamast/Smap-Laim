@@ -104,16 +104,11 @@ Tienes varias opciones para mantener tu bot ejecutándose continuamente:
 
 ### B. Railway.app (Fácil y con plan gratuito)
 
-1. **Crear cuenta:**
-   - Ve a: https://railway.app
-   - Conecta con GitHub
+**⚠️ Ver guía detallada en [RAILWAY_SETUP.md](./RAILWAY_SETUP.md)**
 
-2. **Crear Procfile:**
-   ```
-   worker: python bot.py
-   ```
+**Quick Start:**
 
-3. **Subir a GitHub:**
+1. **Sube a GitHub:**
    ```bash
    git init
    git add .
@@ -123,13 +118,18 @@ Tienes varias opciones para mantener tu bot ejecutándose continuamente:
    git push -u origin main
    ```
 
-4. **Deploy en Railway:**
+2. **Deploy en Railway:**
+   - Ve a https://railway.app
    - New Project → Deploy from GitHub
    - Selecciona tu repositorio
-   - Agrega variables de entorno (TELEGRAM_BOT_TOKEN, ADMIN_USER_ID)
-   - Deploy automático
+   - Agrega variables: `TELEGRAM_BOT_TOKEN`, `ADMIN_USER_ID`
+   
+3. **Configurar Volume (importante para persistir DB):**
+   - Settings → Volumes → New Volume
+   - Mount Path: `/app`
+   - Esto guarda tu `membership.db` entre deployments
 
-**✅ Pros:** Fácil, $5 gratis/mes, auto-deploy  
+**✅ Pros:** Fácil, $5 gratis/mes, auto-deploy, volumes incluidos  
 **❌ Contras:** Plan gratuito limitado a $5/mes de uso
 
 ---
